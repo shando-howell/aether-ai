@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ConvexClientProvider from "@/components/ConvexClientProvider";
 
 export const metadata: Metadata = {
   title: "Aether AI",
@@ -12,10 +13,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        {children}
-      </body>
-    </html>
+    <ConvexClientProvider>
+      <html lang="en">
+        <body>
+          {children}
+        </body>
+      </html>
+    </ConvexClientProvider>
   );
 }
