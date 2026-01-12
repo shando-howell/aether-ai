@@ -33,7 +33,7 @@ export default function Home() {
       </div>
       <div className="flex items-center justify-center">
         <main className="w-full px-4 py-8 mx-auto max-w-7xl flex flex-col items-center text-center">
-          <h2 className="text-white text-3xl">AI Assistant</h2>
+          <h2 className="text-white text-3xl">AI Agent</h2>
           <p className="text-gray-400 text-2xl">Designed for Software Development</p>
         </main>
       </div>
