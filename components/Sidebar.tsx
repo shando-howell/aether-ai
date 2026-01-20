@@ -47,12 +47,12 @@ const Sidebar = () => {
             )}
 
             <div className={cn(
-                "fixed md:inset-y-0 top-14 bottom-0 left-0 z-50 w-72 bg-green-50/80 backdrop-blur-xl border-r border-green-200/50 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:top-0 flex flex-col",
+                "fixed md:inset-y-0 top-14 bottom-0 left-0 z-50 w-72 bg-green-500 backdrop-blur-xl border-r border-green-200/50 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:top-0 flex flex-col",
                 isMobileNavOpen ? "translate-x-0": "-translate-x-full")}>
                 <div className="p-4 border-b border-green-200/50">
                     <Button
                         onClick={handleNewChat}
-                        className="w-full bg-blue hover:bg-blue-50 text-green-700 border border-bluw-200/50 shadow-sm hover:shadow transition-all duration-200">
+                        className="w-full bg-blue-950 hover:bg-blue-50 hover:text-blue-950 text-white border border-bluw-200/50 shadow-sm hover:shadow transition-all duration-200">
                             <PlusIcon className="mr-2 h-4 w-4" /> New Chat
                     </Button>
                 </div>
