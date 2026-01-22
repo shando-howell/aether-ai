@@ -98,6 +98,11 @@ const ChatInterface = ({chatId, initialMessages}: ChatInterfaceProps) => {
             if (!response.body) {
                 throw new Error("No res body available.")
             }
+
+            // Handle the stream
+            // Create SSE parser and stream reader
+            
+
         } catch {
 
         }
