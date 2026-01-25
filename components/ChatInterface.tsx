@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { api } from "@/convex/_generated/api";
 import { ChatRequestBody } from "@/lib/types";
+import { createSSEParser } from "@/lib/createSSEParser";
 
 interface ChatInterfaceProps {
     chatId: Id<"chats">,
@@ -39,6 +40,22 @@ const ChatInterface = ({chatId, initialMessages}: ChatInterfaceProps) => {
             <pre>${formatToolOutput(output)}</pre>
         `;
         return `${terminalHTML}`;
+    }
+
+    // Process stream helper
+    const processStream = async (
+        reader: ReadableStreamDefaultReader<Uint8Array>,
+        onChunk: (chunk: string) => Promise<void>
+    ) => {
+        try {
+            while (true) {
+                const {done, value} = await reader.read();
+                if (done) break;
+                await onChunk(new TextDecoder().decode(value));
+            }
+        } finally {
+            reader.releaseLock();
+        }
     }
 
     // Handle DOM reference side-effect
@@ -101,8 +118,20 @@ const ChatInterface = ({chatId, initialMessages}: ChatInterfaceProps) => {
 
             // Handle the stream
             // Create SSE parser and stream reader
-            
+            const parser = createSSEParser();
+            const reader = response.body.getReader();
 
+            await processStream(reader, async (chunk) => {
+                // Parse messages from chunk
+                const messages = parser.parse(chunk);
+
+                // Handle messages based on type
+                for (const message of messages) {
+                    switch (message.type) {
+                        
+                    }
+                }
+            })
         } catch {
 
         }
