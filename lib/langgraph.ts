@@ -113,3 +113,75 @@ const createWorkflow = () => {
 
     return stateGraph;
 };
+
+function addCachingHeaders(messages: BaseMessage[]): BaseMessage[] {
+    // Rules for caching headers for turn-by-turn conversations
+    // 1. Cache the first system message
+    // 2. Cache the last message
+    // 3. Cache the second to last HUMAN message
+
+    if (!messages.length) return messages;
+
+    // Create a copy of messages to avoid mutating the original
+    const cachedMessages = [...messages];
+
+    // Add cache control
+    const addCache = (message: BaseMessage) => {
+        message.content = [
+            {
+                type: "text",
+                text: message.content as string,
+                cache_control: {type: "ephemeral"}
+            },
+        ];
+    };
+
+    // Cache the last message
+    console.log("Caching the last message");
+    addCache(cachedMessages.at(-1)!);
+
+    // Find and cache the second-to-last human message
+    let humanCount = 0;
+    for (let i = cachedMessages.length - 1; i >= 0; i--) {
+        if (cachedMessages[i] instanceof HumanMessage) {
+            humanCount++;
+            if (humanCount === 2) {
+                addCache(cachedMessages[i]);
+                break;
+            }
+        }
+    }
+
+    return cachedMessages;
+}
+
+export async function submitQuery (
+    messages: BaseMessage[], chatId: string
+) {
+    // Add caching headers to messages
+    const cachedMessages = addCachingHeaders(messages);
+    console.log("Messages:", cachedMessages);
+
+    const workflow = createWorkflow();
+
+    // Creating a checkpoint to save the state of the conversation
+    const checkpointer = new MemorySaver();
+    const app = workflow.compile({ checkpointer });
+
+    // Run the graph and stream
+    const stream = await app.streamEvents(
+        {
+            messages: cachedMessages,
+        },
+        {
+            version: "v2",
+            configurable: {
+                thread_id: chatId,
+            },
+            streamMode: 'messages',
+            runId: chatId
+        },
+    );
+
+    return stream;
+}
