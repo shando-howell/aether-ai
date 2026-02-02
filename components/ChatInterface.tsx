@@ -6,6 +6,8 @@ import { Button } from "./ui/button";
 import { api } from "@/convex/_generated/api";
 import { ChatRequestBody } from "@/lib/types";
 import { createSSEParser } from "@/lib/createSSEParser";
+import { StreamMessageType } from "@/lib/types";
+import { getConvexClient } from "@/lib/convex";
 
 interface ChatInterfaceProps {
     chatId: Id<"chats">,
@@ -128,12 +130,90 @@ const ChatInterface = ({chatId, initialMessages}: ChatInterfaceProps) => {
                 // Handle messages based on type
                 for (const message of messages) {
                     switch (message.type) {
-                        
+                        case StreamMessageType.Token:
+                            if ("token" in message) {
+                                fullResponse += message.token;
+                                setStreamedResponse(fullResponse);
+                            }
+                            break;
+
+                        case StreamMessageType.ToolStart:
+                            if ("tool" in message) {
+                                setCurrentTool({
+                                    name: message.tool,
+                                    input: message.input
+                                }),
+                                fullResponse += formatTerminalOutput(
+                                    message.tool,
+                                    message.input,
+                                    "Processing..."
+                                )
+                                setStreamedResponse(fullResponse);
+                            }
+                            break;
+
+                        case StreamMessageType.ToolEnd:
+                            if ("tool" in message && currentTool) {
+                                const lastTerminalIndex = fullResponse.lastIndexOf(
+                                    '<div class="bg-[#1e1e1e]'
+                                )
+
+                                if (lastTerminalIndex !== -1) {
+                                    fullResponse = fullResponse.substring(0, lastTerminalIndex) +
+                                        formatTerminalOutput(
+                                            message.tool,
+                                            currentTool.input,
+                                            message.output
+                                        );
+                                    setStreamedResponse(fullResponse);
+                                }
+                                setCurrentTool(null);
+                            }
+                            break;
+
+                        case StreamMessageType.Error:
+                            if ("error" in message) {
+                                throw new Error("An error occurred during stream.")
+                            }
+                            break;
+
+                        case StreamMessageType.Done:
+                            const assistantMessage: Doc<"messages"> = {
+                                _id: `temp_assistant_${Date.now()}`,
+                                chatId,
+                                content: fullResponse,
+                                role: "assistant",
+                                createdAt: Date.now()
+                            } as Doc<"messages">;
+
+                            // Add assistant message to DB
+                            const convex = getConvexClient();
+                            // await convex.mutation(
+                            //     api.messages.store, {
+                            //         chatId,
+                            //         content: fullResponse,
+                            //         role: "assistant"
+                            //     }
+                            // );
+
+                            setMessages((prev) => [
+                                ...prev, assistantMessage
+                            ]);
+                            setStreamedResponse("");
+                        return
                     }
                 }
             })
-        } catch {
-
+        } catch (error) {
+            console.error("An error occured during stream processing.")
+            // Remove optimistic user message from messages
+            setMessages((prev) => prev.filter(
+                (msg) => msg._id !== optimisticUserMessage._id))
+            setStreamedResponse(formatTerminalOutput(
+                "error",
+                "error",
+                error instanceof Error ? error.message : "An unknown error occured."
+            ))
         }
     }
 }
