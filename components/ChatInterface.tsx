@@ -216,4 +216,35 @@ const ChatInterface = ({chatId, initialMessages}: ChatInterfaceProps) => {
             ))
         }
     }
+
+    return (
+        <>
+            {/* <WelcomeMessage /> */}
+            {/* {messages.map((message: Doc<"messages">) => (
+                <MessagesBubble
+                    key={message._id}
+                    content={message.content}
+                    isUser={message.role === "user"}
+                />
+                ))}
+            {streamedResponse && <MessagesBubble content={streamedResponse} />} */}
+
+            <div ref={messagesEndRef} />
+            <form onSubmit={handleSubmit}>
+                <input 
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    disabled={isLoading}
+                />
+                <Button
+                    type="submit"
+                    disabled={isLoading || !input.trim()}
+                >
+                    Submit
+                </Button>
+            </form>
+        </>
+    )
 }
+
+export default ChatInterface
