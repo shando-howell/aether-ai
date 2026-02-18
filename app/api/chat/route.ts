@@ -56,8 +56,78 @@ export async function POST(req: Request) {
                 // Stream will be implemented here
                 // Send initial connection established message
                 await sendSSEMessage(writer, { type: StreamMessageType.Connected });
-            } catch {
+
+                // Save user message to DB (Review when Convex is running)
+                // await convex.mutation(
+                //     api.messages.send, {
+                //         chatId,
+                //         content: newMessage
+                //     }
+                // );
                 
+                // Format messages for LangChain
+                const langChainMessages = [
+                    ...messages.map((msg) => msg.role === "user" 
+                        ? new HumanMessage(msg.content)
+                        : new AIMessage(msg.content)
+                    ),
+                    new HumanMessage(newMessage)
+                ];
+
+                // Start streaming events
+                try {
+                    const eventStream = await submitQuery(langChainMessages, chatId);
+
+                    for await (const event of eventStream) {
+                        if (event.event === "on_chat_model_stream") {
+                            // Retrieve token from event object
+                            const token = event.data.chunk;
+
+                            if (token) {
+                                // Retrieve text from AIMessageChunk
+                                const text = token.content.at(0)?.["text"]
+
+                                if (text) {
+                                    await sendSSEMessage(writer, {
+                                        type: StreamMessageType.Token,
+                                        token: text
+                                    })
+                                }
+                            }
+                        } else if (event.event === "on_tool_start") {
+                            await sendSSEMessage(writer, {
+                                type: StreamMessageType.ToolStart,
+                                tool: event.name || "unknown",
+                                input: event.data.input
+                            })
+                        } else if (event.event === "on_tool_end") {
+                            const toolMessage = new ToolMessage(event.data.output);
+
+                            await sendSSEMessage(writer, {
+                                type: StreamMessageType.ToolEnd,
+                                tool: toolMessage.lc_kwargs.name || "unknown",
+                                output: event.data.output
+                            })
+                        }
+                    }
+
+                    // Send completion message without storing the response
+                    await sendSSEMessage(writer, {type: StreamMessageType.Done})
+                } catch (streamError) {
+                    console.error("Error in streaming events:", streamError);
+                    await sendSSEMessage(writer, {
+                        type: StreamMessageType.Error,
+                        error: streamError instanceof Error 
+                            ? streamError.message : "Error in processing stream."
+                    })
+                }
+            } catch (error) {
+                console.error("Error in stream:", error);
+                await sendSSEMessage(writer, {
+                    type: StreamMessageType.Error,
+                    error: error instanceof Error 
+                        ? error.message : "Unknown error."
+                })
             }
         }
     } catch {
