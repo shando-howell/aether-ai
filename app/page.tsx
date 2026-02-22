@@ -42,7 +42,7 @@ export default function Home() {
             <p className="text-gray-400 text-2xl">Engineered for Coding</p>
             <div className="flex justify-center">
               <div className="py-2">
-                <CpuIcon className="h-30 w-30 text-green-600" />
+                <CpuIcon className="h-30 w-30 text-gray-400" />
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function Home() {
             <p className="text-gray-400 text-2xl">Premium Responses</p>
             <div className="flex justify-center">
               <div className="py-2">
-                <MessagesSquare className="h-30 w-30 text-green-600" />
+                <MessagesSquare className="h-30 w-30 text-gray-400" />
               </div>
             </div>
           </div>
@@ -62,11 +62,16 @@ export default function Home() {
             <p className="text-gray-400 text-2xl">Powered by Anthropic</p>
             <div className="flex justify-center">
               <div className="py-2">
-                <Brain className="h-30 w-30 text-green-600" />
+                <Brain className="h-30 w-30 text-gray-400" />
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Footer */}
+      <div className="flex justify-center text-green-600 mt-42">
+        <p className="">Aether AI &copy; 2026</p>
       </div>
     </div>
   );

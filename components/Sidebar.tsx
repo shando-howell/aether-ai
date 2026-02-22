@@ -7,18 +7,18 @@ import { PlusIcon } from '@radix-ui/react-icons';
 import { useMutation, useQuery } from 'convex/react';
 import { api } from '@/convex/_generated/api';
 import { Id } from '@/convex/_generated/dataModel';
+import ChatRow from "./ChatsRow";
 
 const Sidebar = () => {
     const router = useRouter();
     const { closeMobileNav, isMobileNavOpen } = use(NavigationContext);
 
-    // const chats = useQuery(api.chats.listChats);
+    const chats = useQuery(api.chats.listChats);
     const createChat = useMutation(api.chats.createChat);
     const deleteChat = useMutation(api.chats.deleteChat);
 
     const handleClick = () => {
-        // TODO: Route to chat
-        // router.push("/dashboard/chat");
+        router.push("/dashboard/chat");
         closeMobileNav();
     };
 
@@ -28,7 +28,7 @@ const Sidebar = () => {
         closeMobileNav();
     };
 
-    const handleDeleteCHat = async (id: Id<"chats">) => {
+    const handleDeleteChat = async (id: Id<"chats">) => {
         await deleteChat({ id });
         // If chat is in current view, redirect to the dashboard
         if (window.location.pathname.includes(id)) {
@@ -58,9 +58,9 @@ const Sidebar = () => {
                 </div>
 
                 <div className="flex-1 overflow-y-auto space-y-2.5 p-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
-                    {/* {chats?.map((chat) => {
+                    {chats?.map((chat) => (
                         <ChatRow key={chat._id} chat={chat} onDelete={handleDeleteChat} />
-                    })} */}
+                    ))}
                 </div>
             </div>
         </>

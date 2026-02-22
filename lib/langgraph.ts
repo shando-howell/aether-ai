@@ -41,16 +41,16 @@ const toolNode = new ToolNode(tools);
 
 const initializeModel = () => {
     const model = new ChatAnthropic({
-        modelName: "claude-sonnet-4",
+        modelName: "claude-sonnet-4-20250514",
         anthropicApiKey: process.env.ANTHROPIC_API_KEY,
         temperature: 0.7,
-        maxTokens: 4096,
+        maxTokens: 1024,
         streaming: true,
 
         // prompt caching using anthropic api
         clientOptions: {
             defaultHeaders: {
-                "anthropic-beta": "prompt-caching-2024",
+                "anthropic-beta": "prompt-caching-2024-07-31",
             },
         },
     }).bindTools(tools)

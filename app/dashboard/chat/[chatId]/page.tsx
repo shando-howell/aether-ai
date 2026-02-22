@@ -27,11 +27,7 @@ async function ChatPage({params}: ChatPageProps) {
         const initialMessages = await convex.query(api.messages.list, {chatId})
         return (
             <div className="flex-1 overflow-hidden">
-                {/* Work on when Convex is running */}
                 <ChatInterface chatId={chatId} initialMessages={initialMessages} /> 
-                <h1 className="text-green-600">
-                    Chat Interface
-                </h1>
             </div>
         )
     } catch (error) {

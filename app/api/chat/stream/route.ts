@@ -57,13 +57,13 @@ export async function POST(req: Request) {
                 // Send initial connection established message
                 await sendSSEMessage(writer, { type: StreamMessageType.Connected });
 
-                // Save user message to DB (Review when Convex is running)
-                // await convex.mutation(
-                //     api.messages.send, {
-                //         chatId,
-                //         content: newMessage
-                //     }
-                // );
+                // Save user message to DB
+                await convex.mutation(
+                    api.messages.send, {
+                        chatId,
+                        content: newMessage
+                    }
+                );
                 
                 // Format messages for LangChain
                 const langChainMessages = [
@@ -127,10 +127,23 @@ export async function POST(req: Request) {
                     type: StreamMessageType.Error,
                     error: error instanceof Error 
                         ? error.message : "Unknown error."
-                })
+                });
+            } finally {
+                try {
+                    await writer.close();
+                } catch (closeError) {
+                    console.error("Error closing writer:", closeError);
+                }
             }
-        }
-    } catch {
+        };
 
+        startStream();
+        return response;
+    } catch (error) {
+        console.error("Error in chat API:", error)
+        return NextResponse.json(
+            {error: "Failed to process chat request"} as const,
+            {status: 500}
+        );
     }
 }
