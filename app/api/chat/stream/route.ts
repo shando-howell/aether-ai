@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 import { getConvexClient } from "@/lib/convex";
 import { ChatRequestBody } from "@/lib/types";
 import { auth } from "@clerk/nextjs/server";
