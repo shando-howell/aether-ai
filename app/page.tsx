@@ -36,35 +36,28 @@ export default function Home() {
         <h1>Your New Coding Assistant.</h1>
       </div>
       
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         <div className="grid grid-rows-2 gap-1">
           <div className="row-span-3 row-start-1 w-full px-4 mx-auto max-w-7xl items-center text-center">
-            <p className="text-gray-400 text-2xl">Engineered for Coding</p>
             <div className="flex justify-center">
               <div className="py-2">
                 <CpuIcon className="h-30 w-30 text-gray-400" />
               </div>
             </div>
+            <p className="text-gray-400 text-2xl">Engineered for Coders</p>
+            <p className="text-gray-400">Built to be the go-to resource for the modern web programmer.</p>
           </div>
         </div>
+        
         <div className="grid grid-rows-2 gap-1">
           <div className="row-span-3 row-start-1 w-full px-4 mx-auto max-w-7xl items-center text-center">
-            <p className="text-gray-400 text-2xl">Premium Responses</p>
-            <div className="flex justify-center">
-              <div className="py-2">
-                <MessagesSquare className="h-30 w-30 text-gray-400" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="grid grid-rows-2 gap-1">
-          <div className="row-span-3 row-start-1 w-full px-4 mx-auto max-w-7xl items-center text-center">
-            <p className="text-gray-400 text-2xl">Powered by Anthropic</p>
             <div className="flex justify-center">
               <div className="py-2">
                 <Brain className="h-30 w-30 text-gray-400" />
               </div>
             </div>
+            <p className="text-gray-400 text-2xl">Powered by Anthropic</p>
+            <p className="text-gray-400">Using the power of Claude Sonnet to generate premium responses.</p>
           </div>
         </div>
       </div>
