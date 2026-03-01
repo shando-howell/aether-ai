@@ -18,7 +18,7 @@ const Header = () => {
                         <HamburgerMenuIcon className="h-5 w-5" />
                     </Button>
                     <div className="font-semibold bg-linear-to-r from-green-800 to-green-400 bg-clip-text text-blue-950">
-                        Chat with your AI Agent
+                        Chat with Aether
                     </div>
                 </div>
             </div>

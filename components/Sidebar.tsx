@@ -52,7 +52,7 @@ const Sidebar = () => {
                 <div className="p-4 border-b border-green-200/50">
                     <Button
                         onClick={handleNewChat}
-                        className="w-full bg-blue-950 hover:bg-blue-50 hover:text-blue-950 text-white border border-bluw-200/50 shadow-sm hover:shadow transition-all duration-200">
+                        className="w-full bg-blue-950 hover:bg-blue-50 hover:text-blue-950 text-green-400 border border-green-200 shadow-sm hover:shadow transition-all duration-200">
                             <PlusIcon className="mr-2 h-4 w-4" /> New Chat
                     </Button>
                 </div>

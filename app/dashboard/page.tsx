@@ -2,9 +2,15 @@ import Image from "next/image"
 
 const Dashboard = () => {
   return (
-    <div>
-      <div >
-        <Image src="/empty.png" width="400" height="400" alt="Dashboard" className="bg-blue-950 bg-blend-multiply"/>
+    <div className="relative">
+      <div className="flex items-center justify-center h-full mt-40">
+        <Image 
+          src="/empty.png" 
+          width="300" 
+          height="300" 
+          alt="Dashboard" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-950"></div>
       </div>
     </div>
   )

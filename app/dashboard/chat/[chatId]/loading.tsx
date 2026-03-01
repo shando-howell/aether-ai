@@ -22,13 +22,13 @@ export default function loading() {
                                 >
                                     <div className="space-y-3">
                                         <div 
-                                            className={`h-4 animate-pulse rounded w-[90%] ${i % 2 === 0 ? "bg-blue-40" : "bg-green-200"}`}
+                                            className={`h-4 animate-pulse rounded w-[90%] ${i % 2 === 0 ? "bg-blue-40" : "bg-orange-200"}`}
                                         />
                                         <div
-                                            className={`h-4 animate-pulse rounded w-[75%] ${i % 2 === 0 ? "bg-blue-40" : "bg-green-200"}`}
+                                            className={`h-4 animate-pulse rounded w-[75%] ${i % 2 === 0 ? "bg-blue-40" : "bg-orange-200"}`}
                                         />
                                         <div
-                                            className={`h-4 animate-pulse rounded w-[60%] ${i % 2 === 0 ? "bg-blue-40" : "bg-green-200"}`}
+                                            className={`h-4 animate-pulse rounded w-[60%] ${i % 2 === 0 ? "bg-blue-40" : "bg-orange-200"}`}
                                         />
                                     </div>
                                 </div>

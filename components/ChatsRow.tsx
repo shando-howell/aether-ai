@@ -33,10 +33,10 @@ function ChatRow({
         >
             <div className="p-4">
                 <div className="flex justify-between item-start">
-                    <p className="text-sm text-green-500 truncate flex-1 font-medium">
+                    <p className="text-sm text-orange-300 hover:text-blue-950 truncate flex-1 font-medium">
                         {lastMessage ? (
                             <>
-                                {lastMessage.role === "user" ? "You: " : "Assistant: "}
+                                {lastMessage.role === "user" ? "You: " : "Aether: "}
                                 {lastMessage.content.replace(/\\n/g, "\n")}
                             </>
                         ) : (

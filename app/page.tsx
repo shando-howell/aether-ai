@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="p-4">
       <div className="flex flex-row">
-        <div className="text-green-600 text-4xl uppercase bold flex-1">
+        <div className="text-gray-400 text-4xl uppercase bold flex-1">
           <h1>Aether AI</h1>
         </div>
         <div>
@@ -63,7 +63,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className="flex justify-center text-green-600 mt-42">
+      <div className="flex justify-center text-gray-400 mt-42">
         <p className="">Aether AI &copy; 2026</p>
       </div>
     </div>

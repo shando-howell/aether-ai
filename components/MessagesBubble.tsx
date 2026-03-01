@@ -42,7 +42,7 @@ const MessageBubble = ({content, isUser}: MessageBubbleProps) => {
                     : "left-0 -translate-x-1/2 translate-y-1/2"
                 }`}>
                     <div className={`w-8 h-8 rounded-full border-2 ${
-                        isUser ? "bg-white border-gray-100" : "bg-blue-600 border-white"
+                        isUser ? "bg-white border-gray-100" : "bg-orange-400 border-white"
                         } flex items-center justify-center shadow-sm`
                     }>
                         {isUser ? (
