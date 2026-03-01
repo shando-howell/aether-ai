@@ -30,7 +30,7 @@ const MessageBubble = ({content, isUser}: MessageBubbleProps) => {
         <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
             <div 
                 className={`rounded-2xl px-4 py-2.5 max-w-[85%] md:max-w-[75%] shadow-sm ring-1 ring-inset relative ${
-                    isUser ? "bg-blue-600 text-white rounded-br-none ring-blue 700"
+                    isUser ? "bg-green-600 text-white rounded-br-none ring-green-700"
                     : "bg-white text-gray-900 rounded-bl-none ring-gray-200"}`}
             >
                 <div className="whitespace-pre-wrap text-[15px] leading-relaxed">

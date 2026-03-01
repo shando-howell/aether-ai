@@ -28,12 +28,12 @@ function ChatRow({
 
     return (
         <div
-            className="group rounded-xl border border-gray-200/30 bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+            className="group rounded-xl border border-gray-200/30 bg-blue-950 backdrop-blur-sm hover:bg-white/80 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
             onClick={handleClick}
         >
             <div className="p-4">
                 <div className="flex justify-between item-start">
-                    <p className="text-sm text-gray-600 truncate flex-1 font-medium">
+                    <p className="text-sm text-green-500 truncate flex-1 font-medium">
                         {lastMessage ? (
                             <>
                                 {lastMessage.role === "user" ? "You: " : "Assistant: "}
@@ -53,7 +53,7 @@ function ChatRow({
                             onDelete(chat._id);
                         }}
                     >
-                       <TrashIcon className="h-4 w-4 text-gray-400 hover:text-red-500 transition-opacity" />
+                       <TrashIcon className="h-4 w-4 text-blue-950 hover:text-red-500 transition-opacity" />
                     </Button>
                 </div>
 

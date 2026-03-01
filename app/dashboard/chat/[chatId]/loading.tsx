@@ -17,18 +17,18 @@ export default function loading() {
                                     className={`w-2/3 rounded-2xl p-4 ${
                                         i % 2 === 0
                                             ? "bg-blue-600/10 rounded-br-none"
-                                            : "bg-white rounded-bl-none border border-gray-200"
+                                            : "bg-green-600/10 rounded-bl-none border border-green-200"
                                     }`}
                                 >
                                     <div className="space-y-3">
                                         <div 
-                                            className={`h-4 animate-pulse rounded w-[90%] ${i % 2 === 0 ? "bg-white-40" : "bg-gray-200"}`}
+                                            className={`h-4 animate-pulse rounded w-[90%] ${i % 2 === 0 ? "bg-blue-40" : "bg-green-200"}`}
                                         />
                                         <div
-                                            className={`h-4 animate-pulse rounded w-[75%] ${i % 2 === 0 ? "bg-white-40" : "bg-gray-200"}`}
+                                            className={`h-4 animate-pulse rounded w-[75%] ${i % 2 === 0 ? "bg-blue-40" : "bg-green-200"}`}
                                         />
                                         <div
-                                            className={`h-4 animate-pulse rounded w-[60%] ${i % 2 === 0 ? "bg-white-40" : "bg-gray-200"}`}
+                                            className={`h-4 animate-pulse rounded w-[60%] ${i % 2 === 0 ? "bg-blue-40" : "bg-green-200"}`}
                                         />
                                     </div>
                                 </div>
