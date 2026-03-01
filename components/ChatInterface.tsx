@@ -89,6 +89,8 @@ const ChatInterface = ({chatId, initialMessages}: ChatInterfaceProps) => {
             createdAt: Date.now()
         } as Doc<"messages">;
 
+        setMessages((prev) => [...prev, optimisticUserMessage]);
+
         // Track full response for adding to the DB
         let fullResponse = "";
 

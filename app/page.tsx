@@ -33,7 +33,7 @@ export default function Home() {
       </div>
       
       <div className="py-2 text-6xl bg-clip-text text-transparent bg-linear-to-r from-teal-600 to-green-600 items-center text-center m-16">
-        <h1>Your New Coding Assistant.</h1>
+        <h1>Your New Study Companion.</h1>
       </div>
       
       <div className="grid grid-cols-2 gap-4">
