@@ -13,7 +13,7 @@ const Header = () => {
                         variant="ghost"
                         size="icon"
                         onClick={() => setIsMobileNavOpen(true)}
-                        className="md:hidden text-blue-900 hover:text-blue-800 hover:bg-green-400"
+                        className="md:hidden text-orange-400 hover:text-orange-400 hover:bg-green-400"
                     >
                         <HamburgerMenuIcon className="h-5 w-5" />
                     </Button>
