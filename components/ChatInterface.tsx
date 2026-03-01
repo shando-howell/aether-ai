@@ -228,7 +228,9 @@ const ChatInterface = ({chatId, initialMessages}: ChatInterfaceProps) => {
             {/* Messages */}
             <section className="flex-1 overflow-y-auto bg-blue-950 p-2 md:p-0">
                 <div className="max-w-4xl mx-auto p-4 space-y-3">
-                    {messages?.length === 0 && <div>Welcome</div>}
+                    {
+                    messages?.length === 0 && <div className="text-gray-400 text-4xl">Let&apos;s started! 📚</div>
+                    }
                     {messages.map((message: Doc<"messages">) => (
                         <MessageBubble
                             key={message._id}
