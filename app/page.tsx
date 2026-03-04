@@ -36,7 +36,7 @@ export default function Home() {
         <h1>Your New Study Companion.</h1>
       </div>
       
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-8">
         <div className="grid grid-rows-2 gap-1">
           <div className="row-span-3 row-start-1 w-full px-4 mx-auto max-w-7xl items-center text-center">
             <div className="flex justify-center">
@@ -63,7 +63,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className="flex justify-center text-gray-400 mt-42">
+      <div className="flex justify-center text-gray-400 sm:mt-42 mt-28">
         <p className="">Aether AI &copy; 2026</p>
       </div>
     </div>
