@@ -32,7 +32,7 @@ export default function Home() {
         </div>  
       </div>
       
-      <div className="py-2 sm:text-6xl text-4xl bg-clip-text text-transparent bg-linear-to-r from-teal-600 to-green-600 items-center text-center m-16">
+      <div className="sm:py-2 py-1 sm:text-6xl text-4xl bg-clip-text text-transparent bg-linear-to-r from-teal-600 to-green-600 items-center text-center sm:m-16 m-12">
         <h1>Your New Study Companion.</h1>
       </div>
       
@@ -45,7 +45,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-gray-400 text-2xl">Engineered for Coders</p>
-            <p className="text-gray-400">Built to be the go-to resource for the modern web programmer.</p>
+            <p className="text-gray-400">Built to be the on the go resource for the modern web developer.</p>
           </div>
         </div>
         
