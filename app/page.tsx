@@ -44,8 +44,8 @@ export default function Home() {
                 <CpuIcon className="h-30 w-30 text-gray-400" />
               </div>
             </div>
-            <p className="text-gray-400 text-2xl">Engineered for Coders</p>
-            <p className="text-gray-400">Built to be the on the go resource for the modern web developer.</p>
+            <p className="text-gray-400 sm:text-4xl text-2xl">Engineered for Coders</p>
+            <p className="text-gray-400 sm:text-2xl">Built to be the on the go resource for the modern web developer.</p>
           </div>
         </div>
         
@@ -56,14 +56,14 @@ export default function Home() {
                 <Brain className="h-30 w-30 text-gray-400" />
               </div>
             </div>
-            <p className="text-gray-400 text-2xl">Powered by Anthropic</p>
-            <p className="text-gray-400">Using the power of Claude Sonnet to generate premium responses.</p>
+            <p className="text-gray-400 sm:text-4xl text-2xl">Powered by Anthropic</p>
+            <p className="text-gray-400 sm:text-2xl">Using the power of Claude Sonnet to generate premium responses.</p>
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="flex justify-center text-gray-400 sm:mt-42 mt-6">
+      <div className="flex justify-center text-gray-400 sm:text-2xl sm:mt-46 mt-6">
         <p className="">Aether AI &copy; 2026</p>
       </div>
     </div>
