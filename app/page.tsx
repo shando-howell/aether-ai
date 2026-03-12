@@ -63,7 +63,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <div className="flex justify-center text-gray-400 sm:mt-42 mt-16">
+      <div className="flex justify-center text-gray-400 sm:mt-42 mt-8">
         <p className="">Aether AI &copy; 2026</p>
       </div>
     </div>
