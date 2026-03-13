@@ -1,6 +1,6 @@
 import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
-import { Brain, CpuIcon, MessagesSquare } from "lucide-react";
+import { Brain, CpuIcon } from "lucide-react";
 
 export default function Home() {
   return (
