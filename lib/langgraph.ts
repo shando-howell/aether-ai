@@ -1,6 +1,6 @@
 import { ChatAnthropic } from "@langchain/anthropic";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
-import wxflows from "@wxflows/sdk/langchain";
+import { TavilySearch } from "@langchain/tavily";
 import { SYSTEM_MESSAGE } from "@/constants/systemMessage";
 import {
     ChatPromptTemplate, MessagesPlaceholder
@@ -29,14 +29,14 @@ const trimmer = trimMessages({
     startOn: "human",
 });
 
-// Connect to wxFlows
-const toolClient = new wxflows({
-    endpoint: process.env.WXFLOWS_ENDPOINT || "",
-    apikey: process.env.WXFLOWS_API_KEY,
+// Initializing Tavily search tool
+const searchTool = new TavilySearch({
+    tavilyApiKey: process.env.TAVILY_API_KEY,
+    maxResults: 3,
 });
 
 // Retrieve the tools
-const tools = await toolClient.lcTools;
+const tools = [searchTool];
 const toolNode = new ToolNode(tools);
 
 const initializeModel = () => {
