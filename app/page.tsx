@@ -36,7 +36,7 @@ export default function Home() {
         <h1>Your New Study Companion.</h1>
       </div>
       
-      <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
         <div className="grid grid-rows-2 gap-1">
           <div className="row-span-3 row-start-1 w-full px-4 mx-auto max-w-7xl items-center text-center">
             <div className="flex justify-center">
