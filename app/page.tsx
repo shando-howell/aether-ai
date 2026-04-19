@@ -3,10 +3,10 @@ import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
-    <div className="p-4">
+    <div>
       <Navbar />
       <main className="relative overflow-hidden">
-        <div className="relative mx-auto max-w-7xl px-4 py-30 md:py-45">
+        <div className="relative mx-auto max-w-7xl px-4 py-45 md:py-45">
           <div className="py-1 md:py-2 text-4xl md:text-6xl bg-clip-text text-transparent bg-linear-to-r from-teal-600 to-green-600 items-center text-center mt-12 md:mt-16">
             <h1>Your New Study Companion.</h1>
           </div>
@@ -15,8 +15,8 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-24">    
-          <div className="grid grid-rows-2 gap-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-18 md:mb-24">    
+          <div className="grid grid-rows-2 gap-1 mb-8 md:mb-0">
             <div className="row-span-3 row-start-1 w-full px-4 mx-auto max-w-7xl items-center text-center">
               <div className="flex justify-center">
                 <div className="py-2">
