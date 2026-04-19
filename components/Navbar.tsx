@@ -5,13 +5,13 @@ export default function Navbar() {
     return (
         <header className="sticky top-0 w-full bg-teal-600/60 backdrop-blur z-50">
             <div className="flex flex-row px-4 py-1">
-                    <div className="text-green-600 text-4xl uppercase bold flex-1 py-2">
+                    <div className="text-gray-400 text-4xl uppercase bold flex-1 py-2">
                       <h1>Aether AI</h1>
                     </div>
                     <div className="py-2">
                       <SignedIn>
                         <Link href="/dashboard">
-                          <button className="bg-green-600 p-2 text-white">
+                          <button className="bg-green-600 p-2 text-gray-200">
                             Dashboard
                           </button>
                         </Link>

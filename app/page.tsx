@@ -15,7 +15,7 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-18 md:mb-24">    
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-12 md:mb-24">    
           <div className="grid grid-rows-2 gap-1 mb-8 md:mb-0">
             <div className="row-span-3 row-start-1 w-full px-4 mx-auto max-w-7xl items-center text-center">
               <div className="flex justify-center">
