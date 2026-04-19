@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <Navbar />
       <main className="relative overflow-hidden">
-        <div className="relative mx-auto max-w-7xl px-4 py-45 md:py-45">
+        <div className="relative mx-auto max-w-7xl px-4 py-60 md:py-45">
           <div className="py-1 md:py-2 text-4xl md:text-6xl bg-clip-text text-transparent bg-linear-to-r from-teal-600 to-green-600 items-center text-center mt-12 md:mt-16">
             <h1>Your New Study Companion.</h1>
           </div>
